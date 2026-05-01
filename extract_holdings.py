@@ -244,6 +244,26 @@ def classify_row(name: str, isin: str = "") -> str:
 
 
 # ── File parser ──────────────────────────────────────────────────────────────
+def _read_csv_robust(path: str) -> list[list[str]]:
+    """
+    Read a CSV file with best-effort encoding detection. Disclose Register CSVs
+    are sometimes UTF-8, sometimes UTF-8 with BOM, and occasionally Windows-1252
+    (legacy Excel exports). Try them in order; fall back to Latin-1 (which can
+    decode any byte) so we never fail with UnicodeDecodeError.
+    """
+    encodings = ("utf-8-sig", "utf-8", "cp1252", "latin-1")
+    for enc in encodings:
+        try:
+            with open(path, encoding=enc) as f:
+                return [[c.strip() for c in row] for row in csv.reader(f)]
+        except UnicodeDecodeError:
+            continue
+    # Latin-1 above can never raise UnicodeDecodeError, so we should never
+    # reach here. Defensive fallback regardless.
+    with open(path, encoding="latin-1", errors="replace") as f:
+        return [[c.strip() for c in row] for row in csv.reader(f)]
+
+
 def read_holdings_file(path: str) -> list[dict]:
     """
     Return a list of {asset_name, weight_pct, isin, source_row} dicts.
@@ -261,8 +281,7 @@ def read_holdings_file(path: str) -> list[dict]:
             row = [ws.cell(row=r, column=c).value for c in range(1, max_col + 1)]
             rows.append(["" if v is None else str(v).strip() for v in row])
     elif path.lower().endswith(".csv"):
-        with open(path, encoding="utf-8") as f:
-            rows = [[c.strip() for c in row] for row in csv.reader(f)]
+        rows = _read_csv_robust(path)
     else:
         raise ValueError(f"Unsupported file format: {path}")
 
