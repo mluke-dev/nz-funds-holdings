@@ -57,13 +57,18 @@ MATRIX_XLSX   = os.path.join(DATA_DIR, "holdings_matrix.xlsx")
 UNMATCHED_CSV = os.path.join(DATA_DIR, "unmatched.csv")
 LOG_PATH      = os.path.join(DATA_DIR, "extract_log.txt")
 
-# Benchmark: S&P/NZX 50 Fund (SuperLife) — public Disclose Register listing
-BENCHMARK_FUND_ID = "FND19363"
-BENCHMARK_NAME    = "NZX50 Benchmark"
-BENCHMARK_URL     = (
-    "https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/"
-    "FND19363/S-PNZX50FUND-FND19363-Fullportfolioholdings30Sep2025.csv"
-)
+# Benchmark configuration:
+#
+# To populate the NZX50 benchmark column, add a row to selected_funds.csv with
+# tag = "benchmark" pointing at any NZX50-tracking fund. Two good options:
+#
+#   benchmark,FND1115,SMART NZ TOP 50 ETF,SMARTSHARES LIMITED,...,<xlsx URL>
+#   benchmark,FND19363,S&P/NZX 50 FUND,SMARTSHARES LIMITED,...,<xlsx URL>
+#
+# Get the URL from the fund's Sorted page (the "Complete asset portfolio" link).
+# If no benchmark row exists, the matrix will still build but without the
+# BENCHMARK column or active-vs-NZX50 calculations.
+BENCHMARK_TAG = "benchmark"
 
 # Australasian filter — what counts as "in scope" for the matrix
 AUSTRALASIAN_COUNTRIES = {"NZ", "AU"}
@@ -264,26 +269,56 @@ def _read_csv_robust(path: str) -> list[list[str]]:
         return [[c.strip() for c in row] for row in csv.reader(f)]
 
 
+def _detect_format(path: str) -> str:
+    """
+    Return 'xlsx' or 'csv' based on file content (not extension).
+    Some Disclose Register URLs ending in .csv actually serve xlsx binary —
+    we need to handle that gracefully rather than trusting the URL.
+    """
+    with open(path, "rb") as f:
+        head = f.read(4)
+    # xlsx (and other Office 2007+ formats) are ZIP archives — magic is "PK\x03\x04"
+    if head[:2] == b"PK":
+        return "xlsx"
+    # Old .xls (Office 97-2003) magic — we don't support these but flag clearly
+    if head[:4] == b"\xd0\xcf\x11\xe0":
+        return "xls"
+    return "csv"
+
+
 def read_holdings_file(path: str) -> list[dict]:
     """
     Return a list of {asset_name, weight_pct, isin, source_row} dicts.
     Handles both .xlsx and .csv Disclose Register exports. Auto-detects the
     header row by scanning for "asset name" in column A.
+
+    Detects format by content (magic bytes), not file extension — some servers
+    serve xlsx content under a .csv URL.
     """
     rows: list[list[str]]
 
-    if path.lower().endswith(".xlsx"):
-        wb = load_workbook(path, data_only=True)
+    fmt = _detect_format(path)
+    if fmt == "xls":
+        raise ValueError(
+            f"{path}: legacy .xls (Office 97-2003) format not supported. "
+            f"Open in Excel and re-save as .xlsx, or download the .xlsx version."
+        )
+
+    if fmt == "xlsx":
+        # Read bytes and pass to openpyxl as a BytesIO so it doesn't reject
+        # files with the wrong extension (e.g. xlsx content served under .csv URL).
+        from io import BytesIO
+        with open(path, "rb") as f:
+            data = f.read()
+        wb = load_workbook(BytesIO(data), data_only=True)
         ws = wb[wb.sheetnames[0]]
         rows = []
         max_col = max(4, ws.max_column)
         for r in range(1, ws.max_row + 1):
             row = [ws.cell(row=r, column=c).value for c in range(1, max_col + 1)]
             rows.append(["" if v is None else str(v).strip() for v in row])
-    elif path.lower().endswith(".csv"):
+    else:  # csv
         rows = _read_csv_robust(path)
-    else:
-        raise ValueError(f"Unsupported file format: {path}")
 
     # Find header row (col A contains "asset name")
     header_idx = None
@@ -337,7 +372,8 @@ def find_cached(fund_id: str) -> str | None:
 
 
 def download(fund_id: str, url: str, force: bool = False) -> str | None:
-    """Download to RAW_DIR. Returns local path or None on failure."""
+    """Download to RAW_DIR. Returns local path or None on failure.
+    Detects xlsx-served-as-csv (or vice versa) and renames the file to match."""
     if not url:
         log(f"  {fund_id}: no URL given — skipping")
         return None
@@ -359,6 +395,19 @@ def download(fund_id: str, url: str, force: bool = False) -> str | None:
 
     with open(local, "wb") as f:
         f.write(r.content)
+
+    # Sniff content: server may serve xlsx under a .csv URL (or vice versa).
+    # Rename file to match the actual content so caching/parsing don't get
+    # confused on subsequent runs.
+    actual_fmt = _detect_format(local)
+    expected_ext = ".xlsx" if actual_fmt == "xlsx" else ".csv"
+    if not local.lower().endswith(expected_ext):
+        new_local = os.path.join(RAW_DIR, f"{fund_id}{expected_ext}")
+        os.replace(local, new_local)
+        log(f"  {fund_id}: server returned {actual_fmt} content — "
+            f"renamed to {os.path.basename(new_local)}")
+        local = new_local
+
     log(f"  {fund_id}: saved {len(r.content):,} bytes → {os.path.basename(local)}")
     time.sleep(DOWNLOAD_DELAY)
     return local
@@ -381,8 +430,15 @@ def read_selected_funds() -> list[dict]:
                 "fees_pct":   row.get("fees_pct", "").strip(),
                 "url":        row.get("portfolio_xlsx_url", "").strip(),
             })
-    log(f"Loaded {len(funds)} selected funds from {os.path.basename(SELECTED_CSV)}")
-    return funds
+    # Split out any benchmark rows so they don't appear as fund columns
+    benchmark_rows = [f for f in funds if f["tag"].lower() == BENCHMARK_TAG]
+    regular_funds  = [f for f in funds if f["tag"].lower() != BENCHMARK_TAG]
+    log(f"Loaded {len(regular_funds)} selected funds + "
+        f"{len(benchmark_rows)} benchmark fund(s) from {os.path.basename(SELECTED_CSV)}")
+    return regular_funds, benchmark_rows
+
+
+# (read_selected_funds returns a tuple now — earlier callers must unpack)
 
 
 # ── Per-fund processing ──────────────────────────────────────────────────────
@@ -848,29 +904,66 @@ def write_matrix_xlsx(
 
 
 # ── Benchmark loader ─────────────────────────────────────────────────────────
-def load_benchmark(sec_master: SecurityMaster) -> dict[str, float]:
+def load_benchmark(
+    benchmark_rows: list[dict], sec_master: SecurityMaster
+) -> dict[str, float]:
     """
-    Download the S&P/NZX 50 Index Fund holdings, parse, and return
-    {ticker: weight_pct}. We classify and match it through the same pipeline.
+    Take any rows tagged "benchmark" in selected_funds.csv, download and parse
+    them, and return {ticker: weight_pct}. If multiple benchmark rows exist,
+    weights are averaged across them.
+
+    Failures here are NOT fatal — the rest of the matrix still works without
+    a benchmark column.
     """
-    log("Fetching benchmark (S&P/NZX 50 Fund)…")
-    local = download(BENCHMARK_FUND_ID, BENCHMARK_URL)
-    if not local:
-        log("  WARNING: benchmark download failed — matrix will have empty BENCHMARK column")
+    if not benchmark_rows:
+        log("No benchmark row found in selected_funds.csv "
+            "(tag a row with 'benchmark' to enable NZX50 active comparison)")
         return {}
 
-    raw = read_holdings_file(local)
-    weights: dict[str, float] = {}
-    for r in raw:
-        if classify_row(r["asset_name"], r["isin"]) != "equity":
+    log(f"Fetching benchmark from {len(benchmark_rows)} row(s)…")
+    all_weights: list[dict[str, float]] = []
+    for bench in benchmark_rows:
+        fund_id = bench["fund_id"]
+        log(f"  benchmark {fund_id}: {bench['fund_name']}")
+        try:
+            local = download(fund_id, bench["url"])
+        except Exception as e:
+            log(f"    download crashed — {e}")
             continue
-        rec = sec_master.lookup(r["asset_name"], r["isin"])
-        if not rec:
-            log(f"  Benchmark unmatched: {r['asset_name']} ({r['isin']})")
+        if not local:
+            log(f"    download failed — skipping")
             continue
-        weights[rec["ticker"]] = weights.get(rec["ticker"], 0.0) + r["weight_pct"]
-    log(f"  Benchmark: {len(weights)} tickers")
-    return weights
+        try:
+            raw = read_holdings_file(local)
+        except Exception as e:
+            log(f"    parse failed — {e}")
+            continue
+
+        weights: dict[str, float] = {}
+        for r in raw:
+            if classify_row(r["asset_name"], r["isin"]) != "equity":
+                continue
+            rec = sec_master.lookup(r["asset_name"], r["isin"])
+            if not rec:
+                log(f"    benchmark unmatched: {r['asset_name']} ({r['isin']})")
+                continue
+            weights[rec["ticker"]] = weights.get(rec["ticker"], 0.0) + r["weight_pct"]
+        log(f"    parsed {len(weights)} tickers")
+        all_weights.append(weights)
+
+    if not all_weights:
+        log("  All benchmark sources failed — continuing without benchmark column.")
+        return {}
+
+    # Average across benchmark sources (usually just one)
+    if len(all_weights) == 1:
+        return all_weights[0]
+    combined: dict[str, float] = {}
+    for ws in all_weights:
+        for t, w in ws.items():
+            combined[t] = combined.get(t, 0.0) + w
+    n = len(all_weights)
+    return {t: w / n for t, w in combined.items()}
 
 
 # ── Entry point ──────────────────────────────────────────────────────────────
@@ -880,9 +973,9 @@ def main() -> int:
     log("")
 
     sec_master = SecurityMaster(SECURITIES_CSV)
-    funds      = read_selected_funds()
+    funds, benchmark_rows = read_selected_funds()
 
-    benchmark_weights = load_benchmark(sec_master)
+    benchmark_weights = load_benchmark(benchmark_rows, sec_master)
     log("")
 
     rows: list[dict]      = []
