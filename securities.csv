@@ -1,0 +1,115 @@
+ticker,canonical_name,country,sector,isin,aliases
+# NZX50 constituents (sourced from S&P/NZX 50 Index Fund holdings, FND19363, Sep 2025)
+# Sector tags loosely follow the peer-funds categorisation: Gentailers, Retirement, Property, etc.
+FPH,Fisher & Paykel Healthcare,NZ,Healthcare,NZFAPE0001S2,
+AIA,Auckland International Airport,NZ,Infrastructure,NZAIAE0002S6,
+IFT,Infratil,NZ,Infrastructure,NZIFTE0003S3,
+CEN,Contact Energy,NZ,Gentailers,NZCENE0001S6,
+ATM,a2 Milk Company,NZ,Consumer Staples,NZATME0002S8,The A2 Milk Company
+MEL,Meridian Energy,NZ,Gentailers,NZMELE0002S7,
+EBO,EBOS Group,NZ,Healthcare,NZEBOE0001S6,
+MFT,Mainfreight,NZ,Industrials,NZMFTE0001S9,
+MCY,Mercury NZ,NZ,Gentailers,NZMRPE0001S2,Mercury Energy
+SPK,Spark New Zealand,NZ,Telco,NZTELE0001S4,
+CNU,Chorus,NZ,Telco,NZCNUE0001S2,
+FBU,Fletcher Building,NZ,Industrials,NZFBUE0001S0,
+SUM,Summerset Group,NZ,Retirement,NZSUME0001S0,Summerset Group Holdings
+FRW,Freightways Group,NZ,Industrials,NZFREE0001S0,Freightways
+RYM,Ryman Healthcare,NZ,Retirement,NZRYME0001S4,
+POT,Port of Tauranga,NZ,Infrastructure,NZPOTE0003S0,
+GMT,Goodman Property Trust,NZ,Property,NZCPTE0001S9,
+PCT,Precinct Properties,NZ,Property,NZAPTE0001S3,Precinct Properties Group
+KPG,Kiwi Property Group,NZ,Property,NZKPGE0001S9,
+GNE,Genesis Energy,NZ,Gentailers,NZGNEE0001S7,
+PFI,Property for Industry,NZ,Property,NZPFIE0001S5,
+VCT,Vector,NZ,Infrastructure,NZVCTE0001S7,
+GTK,Gentrack Group,NZ,Technology,NZGTKE0002S9,Gentrack
+VHP,Vital Healthcare Property Trust,NZ,Property,NZCHPE0001S4,
+ARG,Argosy Property,NZ,Property,NZARGE0010S7,
+CHI,Channel Infrastructure,NZ,Infrastructure,NZNZRE0001S9,Channel Infrastructure NZ
+SKL,Skellerup Holdings,NZ,Industrials,NZSKXE0001S8,Skellerup
+WBC,Westpac Banking Corp,AU,Financials,AU000000WBC1,Westpac
+AIR,Air New Zealand,NZ,Industrials,NZAIRE0001S2,
+HGH,Heartland Group Holdings,NZ,Financials,NZHGHE0007S9,Heartland
+FSF,Fonterra Co-operative Group,NZ,Consumer Staples,NZFSFE0001S5,Fonterra
+ANZ,ANZ Group Holdings,AU,Financials,AU000000ANZ3,ANZ Banking
+SCL,Scales Corp,NZ,Consumer Staples,NZSCLE0002S8,
+SPG,Stride Property Group,NZ,Property,NZSPGE0001S2,Stride Property
+SKC,SkyCity Entertainment Group,NZ,Consumer Discretionary,NZSKCE0001S2,SkyCity
+TWR,Tower,NZ,Financials,NZTWRE0011S2,
+VSL,Vulcan Steel,AU,Industrials,AU0000181984,
+VGL,Vista Group International,NZ,Technology,NZVGLE0003S1,Vista Group
+THL,Tourism Holdings,NZ,Consumer Discretionary,NZHELE0001S9,
+OCA,Oceania Healthcare,NZ,Retirement,NZOCAE0002S0,
+TRA,Turners Automotive Group,NZ,Consumer Discretionary,NZVNLE0001S1,Turners Automotive
+NZX,NZX,NZ,Financials,NZNZXE0001S7,
+HLG,Hallenstein Glasson Holdings,NZ,Consumer Discretionary,NZHLGE0001S4,Hallenstein Glasson
+SKT,Sky Network Television,NZ,Communications,NZSKTE0001S6,Sky TV
+SAN,Sanford,NZ,Consumer Staples,NZSANE0001S0,
+IPL,Investore Property,NZ,Property,NZIPLE0001S3,Investore
+NPH,Napier Port Holdings,NZ,Infrastructure,NZNPHE0005S2,Napier Port
+SKO,Serko,NZ,Technology,NZSKOE0001S7,
+BGP,Briscoe Group,NZ,Consumer Discretionary,NZBGRE0001S4,Briscoe
+KMD,KMD Brands,NZ,Consumer Discretionary,NZKMDE0001S3,Kathmandu
+
+# NZX50 fringe / smaller-cap that NZ funds commonly hold but not in top 50
+DGL,Delegat Group,NZ,Consumer Staples,NZDGLE0001S0,Delegat
+XRO,Xero,NZ,Technology,NZXROE0001S6,
+MMH,Marsden Maritime Holdings,NZ,Infrastructure,,
+ERD,EROAD,NZ,Technology,NZERDE0001S9,
+PEB,Pacific Edge,NZ,Healthcare,NZPEBE0001S5,
+SDL,Solution Dynamics,NZ,Technology,NZSDLE0001S6,
+MOVE,Move Logistics Group,NZ,Industrials,NZMOVE0001S0,Move Logistics
+BRW,Bremworth,NZ,Consumer Discretionary,,
+SEK,Seeka,NZ,Consumer Staples,NZSEKE0001S6,
+TRU,TruScreen Group,NZ,Healthcare,,
+
+# Common ASX top-50 / mid-cap names held by NZ Australasian funds
+CBA,Commonwealth Bank of Australia,AU,Financials,AU000000CBA7,Commonwealth Bank
+NAB,National Australia Bank,AU,Financials,AU000000NAB4,
+BHP,BHP Group,AU,Materials,AU000000BHP4,BHP
+RIO,Rio Tinto,AU,Materials,AU000000RIO1,
+CSL,CSL,AU,Healthcare,AU000000CSL8,
+WES,Wesfarmers,AU,Consumer Discretionary,AU000000WES1,
+WOW,Woolworths Group,AU,Consumer Staples,AU000000WOW2,Woolworths
+TLS,Telstra Group,AU,Telco,AU000000TLS2,Telstra
+MQG,Macquarie Group,AU,Financials,AU000000MQG1,Macquarie
+TCL,Transurban Group,AU,Infrastructure,AU000000TCL6,Transurban
+GMG,Goodman Group,AU,Property,AU000000GMG2,
+QAN,Qantas Airways,AU,Industrials,AU000000QAN2,Qantas
+JHX,James Hardie Industries,AU,Materials,IE00BD1NXY58,James Hardie
+COL,Coles Group,AU,Consumer Staples,AU0000030678,Coles
+WTC,WiseTech Global,AU,Technology,AU000000WTC3,WiseTech
+ALL,Aristocrat Leisure,AU,Consumer Discretionary,AU000000ALL7,
+NEM,Newmont,AU,Materials,US6516391066,Newmont Mining
+SUN,Suncorp Group,AU,Financials,AU000000SUN6,Suncorp
+ORG,Origin Energy,AU,Energy,AU000000ORG5,Origin
+AMC,Amcor PLC,AU,Materials,JE00BJ1F3079,Amcor
+REA,REA Group,AU,Communications,AU000000REA9,
+COH,Cochlear,AU,Healthcare,AU000000COH5,
+RMD,ResMed,AU,Healthcare,US7611521078,
+TLC,The Lottery Corporation,AU,Consumer Discretionary,AU0000189734,Lottery Corp
+QBE,QBE Insurance Group,AU,Financials,AU000000QBE9,QBE
+SCG,Scentre Group,AU,Property,AU000000SCG8,
+STO,Santos,AU,Energy,AU000000STO6,
+WDS,Woodside Energy Group,AU,Energy,AU0000024137,Woodside
+S32,South32,AU,Materials,AU000000S320,
+CPU,Computershare,AU,Technology,AU000000CPU5,
+ASX,ASX,AU,Financials,AU000000ASX7,
+RHC,Ramsay Health Care,AU,Healthcare,AU000000RHC8,Ramsay
+SHL,Sonic Healthcare,AU,Healthcare,AU000000SHL7,Sonic
+TAH,Tabcorp Holdings,AU,Consumer Discretionary,AU000000TAH8,Tabcorp
+SVW,Seven Group Holdings,AU,Industrials,AU000000SVW5,Seven Group
+TWE,Treasury Wine Estates,AU,Consumer Staples,AU000000TWE9,Treasury Wine
+BSL,BlueScope Steel,AU,Materials,AU000000BSL0,BlueScope
+ORI,Orica,AU,Materials,AU000000ORI1,
+ALD,Ampol,AU,Energy,AU000000ALD7,
+PME,Pro Medicus,AU,Healthcare,AU000000PME0,
+EVN,Evolution Mining,AU,Materials,AU000000EVN4,Evolution
+NST,Northern Star Resources,AU,Materials,AU000000NST8,Northern Star
+WHC,Whitehaven Coal,AU,Energy,AU000000WHC8,Whitehaven
+CAR,CAR Group,AU,Communications,AU000000CAR4,
+FMG,Fortescue,AU,Materials,AU000000FMG4,Fortescue Metals
+PDN,Paladin Energy,AU,Energy,AU000000PDN8,Paladin
+ALU,Altium,AU,Technology,AU000000ALU6,
+CWY,Cleanaway Waste Management,AU,Industrials,AU000000CWY6,Cleanaway
