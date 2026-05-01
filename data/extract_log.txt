@@ -1,0 +1,113 @@
+[00:50:30] NZ Funds Holdings Extractor — 2026-05-01T00:50:30
+
+[00:50:30] Loaded 105 securities by ISIN, 135 by name.
+[00:50:30] Loaded 20 selected funds + 0 benchmark fund(s) from selected_funds.csv
+[00:50:30] No benchmark row found in selected_funds.csv (tag a row with 'benchmark' to enable NZX50 active comparison)
+
+[00:50:30] Fund FND22677: MINT NEW ZEALAND SRI EQUITY FUND
+[00:50:30]   FND22677: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND22677/MINT-NEW-ZEALAND-SRI-EQUITY-FUND-FND22677-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:31]   FND22677: saved 7,413 bytes → FND22677.xlsx
+[00:50:32]   FND22677: parsed 39 rows; classifying & matching…
+[00:50:32]   FND22677: 22 Australasian equities (96.9% of fund), 16 unmatched, 2.1% non-equity
+[00:50:32] Fund FND2208: NEW ZEALAND SHARE FUND
+[00:50:32]   FND2208: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND2208/NEW-ZEALAND-SHARE-FUND-FND2208-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:33]   FND2208: saved 6,690 bytes → FND2208.xlsx
+[00:50:33]   FND2208: parsed 5 rows; classifying & matching…
+[00:50:33]   FND2208: 0 Australasian equities (0.0% of fund), 5 unmatched, 0.0% non-equity
+[00:50:33] Fund FND901: CLARITY TRANS-TASMAN VALUE FUND
+[00:50:33]   FND901: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND901/CLARITY-TRANS-TASMAN-VALUE-FUND-FND901-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:34]   FND901: saved 8,053 bytes → FND901.xlsx
+[00:50:35]   FND901: parsed 66 rows; classifying & matching…
+[00:50:35]   FND901: 43 Australasian equities (84.4% of fund), 23 unmatched, 0.0% non-equity
+[00:50:35] Fund FND16067: CLARITY NEW ZEALAND EQUITY FUND
+[00:50:35]   FND16067: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND16067/CLARITY-NEW-ZEALAND-EQUITY-FUND-FND16067-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:36]   FND16067: saved 7,481 bytes → FND16067.xlsx
+[00:50:36]   FND16067: parsed 38 rows; classifying & matching…
+[00:50:36]   FND16067: 28 Australasian equities (92.5% of fund), 10 unmatched, 0.0% non-equity
+[00:50:36] Fund FND20455: SALT CORE NZ SHARES FUND
+[00:50:36]   FND20455: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND20455/SALT-CORE-NZ-SHARES-FUND-FND20455-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:37]   FND20455: saved 7,715 bytes → FND20455.xlsx
+[00:50:38]   FND20455: parsed 47 rows; classifying & matching…
+[00:50:38]   FND20455: 36 Australasian equities (97.1% of fund), 9 unmatched, 0.6% non-equity
+[00:50:38] Fund FND1421: HARBOUR AUSTRALASIAN EQUITY FUND
+[00:50:38]   FND1421: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND1421/HARBOUR-AUSTRALASIAN-EQUITY-FUND-FND1421-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:38]   FND1421: saved 7,700 bytes → FND1421.xlsx
+[00:50:38]   FND1421: parsed 48 rows; classifying & matching…
+[00:50:38]   FND1421: 28 Australasian equities (89.4% of fund), 16 unmatched, 0.5% non-equity
+[00:50:38] Fund FND1240: FISHER FUNDS PREMIUM NEW ZEALAND FUND
+[00:50:38]   FND1240: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND1240/FISHER-FUNDS-PREMIUM-NEW-ZEALAND-FUND-FND1240-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:39]   FND1240: saved 7,205 bytes → FND1240.xlsx
+[00:50:40]   FND1240: parsed 23 rows; classifying & matching…
+[00:50:40]   FND1240: 17 Australasian equities (97.0% of fund), 0 unmatched, 3.0% non-equity
+[00:50:40] Fund FND44367: GENERATE AUSTRALASIAN MANAGED FUND
+[00:50:40]   FND44367: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND44367/GENERATE-AUSTRALASIAN-MANAGED-FUND-FND44367-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:41]   FND44367: saved 7,851 bytes → FND44367.xlsx
+[00:50:41]   FND44367: parsed 53 rows; classifying & matching…
+[00:50:41]   FND44367: 37 Australasian equities (86.1% of fund), 16 unmatched, 0.0% non-equity
+[00:50:41] Fund FND806: NEW ZEALAND EQUITIES FUND (OCTAGON)
+[00:50:41]   FND806: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND806/NEW-ZEALAND-EQUITIES-FUND-FND806-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:42]   FND806: saved 7,829 bytes → FND806.xlsx
+[00:50:43]   FND806: parsed 50 rows; classifying & matching…
+[00:50:43]   FND806: 42 Australasian equities (96.3% of fund), 8 unmatched, 0.0% non-equity
+[00:50:43] Fund FND967: AUSTRALIAN EQUITIES FUND (OCTAGON)
+[00:50:43]   FND967: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND967/AUSTRALIAN-EQUITIES-FUND-FND967-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:44]   FND967: saved 8,927 bytes → FND967.xlsx
+[00:50:44]   FND967: parsed 99 rows; classifying & matching…
+[00:50:44]   FND967: 44 Australasian equities (70.6% of fund), 52 unmatched, -1.3% non-equity
+[00:50:44] Fund FND900: MINT AUSTRALASIAN EQUITY FUND
+[00:50:44]   FND900: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND900/MINT-AUSTRALASIAN-EQUITY-FUND-FND900-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:45]   FND900: saved 7,748 bytes → FND900.xlsx
+[00:50:45]   FND900: parsed 55 rows; classifying & matching…
+[00:50:45]   FND900: 24 Australasian equities (90.5% of fund), 27 unmatched, 0.4% non-equity
+[00:50:45] Fund FND45300: NZ COMPANIES FUND
+[00:50:45]   FND45300: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND45300/NZ-COMPANIES-FUND-FND45300-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:46]   FND45300: saved 7,845 bytes → FND45300.xlsx
+[00:50:46]   FND45300: parsed 51 rows; classifying & matching…
+[00:50:46]   FND45300: 42 Australasian equities (95.9% of fund), 9 unmatched, 0.0% non-equity
+[00:50:46] Fund FND2935: SBS WEALTH AUSTRALASIAN EQUITY PORTFOLIO
+[00:50:46]   FND2935: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND2935/SBS-WEALTH-AUSTRALASIAN-EQUITY-PORTFOLIO-FND2935-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:47]   FND2935: saved 7,473 bytes → FND2935.xlsx
+[00:50:48]   FND2935: parsed 34 rows; classifying & matching…
+[00:50:48]   FND2935: 26 Australasian equities (76.0% of fund), 3 unmatched, 3.5% non-equity
+[00:50:48] Fund FND1425: HARBOUR AUSTRALASIAN EQUITY FOCUS FUND
+[00:50:48]   FND1425: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND1425/HARBOUR-AUSTRALASIAN-EQUITY-FOCUS-FUND-FND1425-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:49]   FND1425: saved 7,368 bytes → FND1425.xlsx
+[00:50:49]   FND1425: parsed 34 rows; classifying & matching…
+[00:50:49]   FND1425: 20 Australasian equities (83.4% of fund), 10 unmatched, 0.4% non-equity
+[00:50:49] Fund FND326: QUAYSTREET NEW ZEALAND EQUITY FUND
+[00:50:49]   FND326: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND326/QUAYSTREET-NEW-ZEALAND-EQUITY-FUND-FND326-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:50]   FND326: saved 7,371 bytes → FND326.xlsx
+[00:50:51]   FND326: parsed 33 rows; classifying & matching…
+[00:50:51]   FND326: 28 Australasian equities (92.3% of fund), 1 unmatched, 7.3% non-equity
+[00:50:51] Fund FND1505: DEVON TRANS-TASMAN FUND
+[00:50:51]   FND1505: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND1505/DEVON-TRANS-TASMAN-FUND-FND1505-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:52]   FND1505: saved 7,981 bytes → FND1505.xlsx
+[00:50:52]   FND1505: parsed 64 rows; classifying & matching…
+[00:50:52]   FND1505: 41 Australasian equities (88.3% of fund), 23 unmatched, 0.0% non-equity
+[00:50:52] Fund FND1208: FISHER FUNDS NEW ZEALAND GROWTH FUND
+[00:50:52]   FND1208: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND1208/FISHER-FUNDS-NEW-ZEALAND-GROWTH-FUND-FND1208-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:53]   FND1208: saved 7,213 bytes → FND1208.xlsx
+[00:50:53]   FND1208: parsed 23 rows; classifying & matching…
+[00:50:53]   FND1208: 17 Australasian equities (97.2% of fund), 0 unmatched, 2.8% non-equity
+[00:50:53] Fund FND768: AMP AUSTRALASIAN SHARES FUND
+[00:50:53]   FND768: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND768/AMP-AUSTRALASIAN-SHARES-FUND-FND768-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:54]   FND768: saved 14,003 bytes → FND768.xlsx
+[00:50:54]   FND768: parsed 331 rows; classifying & matching…
+[00:50:54]   FND768: 87 Australasian equities (95.0% of fund), 240 unmatched, -0.0% non-equity
+[00:50:54] Fund FND1067: FISHER FUNDS TRANS TASMAN EQUITY TRUST
+[00:50:54]   FND1067: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND1067/FISHER-FUNDS-TRANS-TASMAN-EQUITY-TRUST-FND1067-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:54]   FND1067: saved 8,050 bytes → FND1067.xlsx
+[00:50:55]   FND1067: parsed 61 rows; classifying & matching…
+[00:50:55]   FND1067: 28 Australasian equities (74.2% of fund), 16 unmatched, 4.0% non-equity
+[00:50:55] Fund FND1623: NEW ZEALAND AND AUSTRALIAN SHARES
+[00:50:55]   FND1623: downloading https://smartinvestor.sorted.org.nz/disclose-document/full-portfolio/FND1623/NEW-ZEALAND-AND-AUSTRALIAN-SHARES-FND1623-Full-portfolio-holdings-31-December-2025.xlsx
+[00:50:55]   FND1623: saved 7,512 bytes → FND1623.xlsx
+[00:50:56]   FND1623: parsed 39 rows; classifying & matching…
+[00:50:56]   FND1623: 30 Australasian equities (89.9% of fund), 5 unmatched, 5.7% non-equity
+
+[00:50:56] Writing outputs…
+[00:50:56] Wrote /home/runner/work/nz-funds-holdings/nz-funds-holdings/data/holdings_clean.csv (640 rows)
+[00:50:56] Wrote /home/runner/work/nz-funds-holdings/nz-funds-holdings/data/unmatched.csv (553 rows)
+[00:50:56]   Matrix sheet: 98 rows × 20 funds
+[00:50:56] Wrote /home/runner/work/nz-funds-holdings/nz-funds-holdings/data/holdings_matrix.xlsx
+[00:50:56] Done in 0:00:25.854085.
